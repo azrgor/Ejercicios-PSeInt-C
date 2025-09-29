@@ -30,5 +30,4 @@ Cada ejercicio cuenta con su versión en PSeInt y en C, como fue especificado.
 
 ---
 
-✍️ Autor: *[Tu nombre aquí]*
-📅 Fecha: *29/09/2025*
+28/09/2025
