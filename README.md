@@ -26,40 +26,7 @@ Taller-Algoritmos-29092025/
 ---
 
 ## 📌 Ejercicios
-
-Cada ejercicio cuenta con su versión en PSeInt y en C.
-Debajo encontrarás los enlaces directos a los archivos (descarga/raw):
-
-1. **Signos zodiacales**
-
-   * [PSeInt](./PSeInt/1.20_signos_zodiacales.psc)
-   * [C](./C/1.20_signos_zodiacales.c)
-
-2. **Cálculo de descuentos**
-
-   * [PSeInt](./PSeInt/2.24_descuentos.psc)
-   * [C](./C/2.24_descuentos.c)
-
-3. **Cálculo de pulsaciones**
-
-   * [PSeInt](./PSeInt/2.44_pulsaciones.psc)
-   * [C](./C/2.44_pulsaciones.c)
-
-...
-*(y así con los 10 ejercicios)*
-
----
-
-## 🖼️ Pantallazos
-
-En el documento entregado al profesor se incluyen los pantallazos de la ejecución de cada programa junto con los enlaces de descarga de los archivos correspondientes.
-
----
-
-## ⚙️ Requisitos
-
-* **PSeInt** (para los `.psc`) → [descargar aquí](https://pseint.sourceforge.io)
-* **Compilador de C** (GCC, Code::Blocks, Dev-C++ o similar)
+Cada ejercicio cuenta con su versión en PSeInt y en C, como fue especificado.
 
 ---
 
