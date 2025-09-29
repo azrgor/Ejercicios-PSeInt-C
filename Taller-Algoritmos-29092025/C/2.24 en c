@@ -1,0 +1,44 @@
+#include <stdio.h>
+
+// Función que calcula el total de una compra (captura precios hasta que el cliente termine)
+float calcularTotalCliente() {
+	float precio, total = 0.0;
+	char opcion;
+	
+	do {
+		printf("Ingrese el precio del artículo: $");
+		scanf("%f", &precio);
+		
+		total += precio;
+		
+		printf("¿Desea ingresar otro artículo? (s/n): ");
+		scanf(" %c", &opcion);  // El espacio antes de %c limpia buffer
+		
+	} while (opcion == 's' || opcion == 'S');
+	
+	return total;
+}
+
+int main() {
+	int nClientes;
+	float totalCliente, totalDia = 0.0;
+	
+	printf("Ingrese la cantidad de clientes: ");
+	scanf("%d", &nClientes);
+	
+	for (int i = 1; i <= nClientes; i++) {
+		printf("\nCliente %d:\n", i);
+		
+		totalCliente = calcularTotalCliente();
+		
+		printf("Monto a pagar por el cliente %d: $%.2f\n", i, totalCliente);
+		
+		totalDia += totalCliente;
+	}
+	
+	printf("\nMonto total cobrado por el cajero en el día: $%.2f\n", totalDia);
+	
+	return 0;
+}
+
+

@@ -1,0 +1,61 @@
+#include <stdio.h>
+
+#define TOTAL_TRABAJADORES 102
+
+// Función que calcula el pago neto después de impuesto
+float calcularPagoNeto(float horas, float sueldoHora) {
+	float pagoBruto = horas * sueldoHora;
+	
+	if (pagoBruto >= 1000) {
+		return pagoBruto * 0.90;  // Descuento del 10%
+	} else {
+		return pagoBruto;         // No se descuenta
+	}
+}
+
+// Función que lee los datos de un trabajador
+void leerDatosTrabajador(float *horas, float *sueldoHora, int *tipo) {
+	printf("Ingrese las horas trabajadas: ");
+	scanf("%f", horas);
+	
+	printf("Ingrese el sueldo por hora: ");
+	scanf("%f", sueldoHora);
+	
+	do {
+		printf("Tipo de trabajador (1 = obrero, 2 = empleado): ");
+		scanf("%d", tipo);
+	} while (*tipo != 1 && *tipo != 2);
+}
+
+int main() {
+	float horas, sueldoHora;
+	int tipo;
+	float pagoNeto;
+	float totalObreros = 0.0, totalEmpleados = 0.0;
+	
+	printf("=== CALCULO DE PAGOS PARA 102 TRABAJADORES ===\n");
+	
+	for (int i = 1; i <= TOTAL_TRABAJADORES; i++) {
+		printf("\nTrabajador %d\n", i);
+		
+		leerDatosTrabajador(&horas, &sueldoHora, &tipo);
+		
+		pagoNeto = calcularPagoNeto(horas, sueldoHora);
+		
+		if (tipo == 1) {
+			totalObreros += pagoNeto;
+		} else {
+			totalEmpleados += pagoNeto;
+		}
+		
+		printf("Pago neto para el trabajador %d: %.2f BsF\n", i, pagoNeto);
+	}
+	
+	printf("\n=== RESUMEN FINAL ===\n");
+	printf("Total pagado a obreros: %.2f BsF\n", totalObreros);
+	printf("Total pagado a empleados: %.2f BsF\n", totalEmpleados);
+	
+	return 0;
+}
+
+

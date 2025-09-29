@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <ctype.h>
+
+#define TOTAL_PERSONAS 1000
+
+// Estructura para una persona
+typedef struct {
+	int numeroCenso;
+	char sexo;         // 'M' o 'F'
+	int edad;
+	char estadoCivil;  // 'a' (soltero), 'b' (casado), 'c' (viudo), 'd' (divorciado)
+} Persona;
+
+// Función para leer los datos de una persona
+void leerPersona(Persona *p) {
+	printf("Número de censo: ");
+	scanf("%d", &p->numeroCenso);
+	
+	printf("Sexo (M/F): ");
+	scanf(" %c", &p->sexo);
+	p->sexo = toupper(p->sexo);  // Convertir a mayúscula
+	
+	printf("Edad: ");
+	scanf("%d", &p->edad);
+	
+	printf("Estado civil (a: Soltero, b: Casado, c: Viudo, d: Divorciado): ");
+	scanf(" %c", &p->estadoCivil);
+	p->estadoCivil = tolower(p->estadoCivil); // Convertir a minúscula
+}
+
+// Función para verificar si la persona es mujer, soltera, entre 16 y 21 años
+int esJovenSoltera(Persona p) {
+	return (p.sexo == 'F' && p.edad >= 16 && p.edad <= 21 && p.estadoCivil == 'a');
+}
+
+int main() {
+	Persona personas[TOTAL_PERSONAS];
+	int i;
+	
+	printf("=== CENSO DE PERSONAS ===\n");
+	
+	// Leer datos de todas las personas
+	for (i = 0; i < TOTAL_PERSONAS; i++) {
+		printf("\nPersona %d\n", i + 1);
+		leerPersona(&personas[i]);
+	}
+	
+	// Imprimir jóvenes solteras entre 16 y 21 años
+	printf("\n=== JoVENES SOLTERAS ENTRE 16 Y 21 AÑOS ===\n");
+	for (i = 0; i < TOTAL_PERSONAS; i++) {
+		if (esJovenSoltera(personas[i])) {
+			printf("Número de censo: %d\n", personas[i].numeroCenso);
+		}
+	}
+	
+	return 0;
+}

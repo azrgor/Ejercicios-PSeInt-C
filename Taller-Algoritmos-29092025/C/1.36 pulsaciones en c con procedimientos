@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+// Función que calcula las pulsaciones según sexo y edad
+int calcularPulsaciones(int edad, char sexo) {
+	int pulsaciones;
+	
+	if (sexo == 'F' || sexo == 'f') {
+		pulsaciones = (220 - edad) / 10;
+	} else if (sexo == 'M' || sexo == 'm') {
+		pulsaciones = (210 - edad) / 10;
+	} else {
+		pulsaciones = -1;  // valor de error si sexo no es válido
+	}
+	
+	return pulsaciones;
+}
+
+// Procedimiento para pedir datos y mostrar resultado
+void procesarPulsaciones() {
+	int edad, resultado;
+	char sexo;
+	
+	printf("Ingrese su edad: ");
+	scanf("%d", &edad);
+	
+	printf("Ingrese su sexo (M para masculino, F para femenino): ");
+	scanf(" %c", &sexo);  // espacio antes de %c para evitar problemas con buffer
+	
+	resultado = calcularPulsaciones(edad, sexo);
+	
+	if (resultado == -1) {
+		printf("Sexo inválido.\n");
+	} else {
+		printf("Número de pulsaciones por cada 10 segundos de ejercicio: %d\n", resultado);
+	}
+}
+
+int main() {
+	printf("=== Cálculo de pulsaciones por ejercicio aeróbico ===\n");
+	procesarPulsaciones();
+	return 0;
+}

@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+// Procedimiento que calcula el descuento según el número aleatorio
+void calcularDescuento(float totalCompra, int numero, float *descuento, float *totalFinal) {
+	if (numero < 74) {
+		*descuento = totalCompra * 0.15;
+	} else {
+		*descuento = totalCompra * 0.20;
+	}
+	
+	*totalFinal = totalCompra - *descuento;
+}
+
+// Procedimiento que controla el flujo del programa
+void procesarCompra() {
+	float totalCompra, descuento, totalFinal;
+	int numeroAleatorio;
+	
+	printf("Ingrese el total de la compra: ");
+	scanf("%f", &totalCompra);
+	
+	// Generar número aleatorio entre 1 y 100
+	srand(time(NULL));
+	numeroAleatorio = rand() % 100 + 1;
+	
+	printf("Número aleatorio seleccionado: %d\n", numeroAleatorio);
+	
+	calcularDescuento(totalCompra, numeroAleatorio, &descuento, &totalFinal);
+	
+	printf("Descuento aplicado: %.2f BsF\n", descuento);
+	printf("Total a pagar después del descuento: %.2f BsF\n", totalFinal);
+}
+
+int main() {
+	printf("=== PROMOCIoN DE DESCUENTO POR NUMERO ALEATORIO ===\n");
+	procesarCompra();
+	return 0;
+}
+
+

@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <string.h>
+
+// Procedimiento para calcular el monto final después del descuento
+void calcularDescuento(float totalCompra, char colorBolita[], float *montoFinal) {
+	// Convertimos el color a minúsculas para evitar problemas con mayúsculas/minúsculas
+	for(int i = 0; colorBolita[i]; i++){
+		if(colorBolita[i] >= 'A' && colorBolita[i] <= 'Z'){
+			colorBolita[i] = colorBolita[i] + 32;
+		}
+	}
+	
+	if (strcmp(colorBolita, "blanco") == 0) {
+		*montoFinal = totalCompra;  // 0% descuento
+	} else if (strcmp(colorBolita, "verde") == 0) {
+		*montoFinal = totalCompra * 0.90;  // 10% descuento
+	} else if (strcmp(colorBolita, "amarilla") == 0) {
+		*montoFinal = totalCompra * 0.75;  // 25% descuento
+	} else if (strcmp(colorBolita, "azul") == 0) {
+		*montoFinal = totalCompra * 0.50;  // 50% descuento
+	} else if (strcmp(colorBolita, "roja") == 0) {
+		*montoFinal = 0;  // 100% descuento
+	} else {
+		// Si el color no es válido, no se aplica descuento
+		*montoFinal = totalCompra;
+		printf("Color no válido, no se aplica descuento.\n");
+	}
+}
+
+// Procedimiento para pedir datos y mostrar resultado
+void procesarCompra() {
+	float totalCompra, montoFinal;
+	char colorBolita[20];
+	
+	printf("Ingrese el total de la compra: ");
+	scanf("%f", &totalCompra);
+	
+	printf("Ingrese el color de la bolita (blanco, verde, amarilla, azul, roja): ");
+	scanf("%s", colorBolita);
+	
+	calcularDescuento(totalCompra, colorBolita, &montoFinal);
+	
+	printf("El monto final a pagar es: %.2f\n", montoFinal);
+}
+
+int main() {
+	printf("=== Promocion de descuento por color de bolita ===\n");
+	procesarCompra();
+	return 0;
+}
+
+
